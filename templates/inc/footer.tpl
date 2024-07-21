@@ -10,7 +10,7 @@
 
         &middot;
 
-        <a rel="noopener" target="_blank" href="https://github.com/Rudloff/alltube">
+        <a rel="noopener" target="_blank" href="https://git.private.coffee/privatecoffee/alltube">
             {t}Get the code{/t}
         </a>
 

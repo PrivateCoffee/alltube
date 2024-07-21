@@ -1,3 +1,3 @@
-<a href="https://ytdl-org.github.io/youtube-dl/">
-    youtube-dl
+<a href="https://github.com/yt-dlp/yt-dlp">
+    yt-dlp
 </a>
