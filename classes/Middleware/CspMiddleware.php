@@ -41,6 +41,7 @@ class CspMiddleware
             ->addDirective('font-src', ['self' => true])
             ->addDirective('style-src', ['self' => true])
             ->addDirective('manifest-src', ['self' => true])
+            ->addDirective('img-src', ['self' => true])
             ->addDirective('base-uri', [])
             ->addDirective('frame-ancestors', [])
             ->addSource('form-action', '*')
