@@ -8,3 +8,4 @@ i18n/*/LC_MESSAGES/*.mo
 .phpunit.result.cache
 .git/
 assets/
+composer.phar
