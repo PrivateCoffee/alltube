@@ -222,6 +222,25 @@ class FrontController extends BaseController
             }
         }
 
+        /* Fetch the thumbnail, if it exists, and add a data URI to the video object */
+        if (isset($this->video->thumbnail) && $this->video->thumbnail !== '') {
+            /* Fetch the thumbnail */
+            $thumbnailData = file_get_contents($this->video->thumbnail);
+            $thumbnailData = base64_encode($thumbnailData);
+            /* Guess the mime type */
+            $thumbnailMime = 'image/jpeg';
+
+            if (strpos($this->video->thumbnail, '.png') !== false) {
+                $thumbnailMime = 'image/png';
+            } elseif (strpos($this->video->thumbnail, '.gif') !== false) {
+                $thumbnailMime = 'image/gif';
+            } elseif (strpos($this->video->thumbnail, '.webp') !== false) {
+                $thumbnailMime = 'image/webp';
+            }
+
+            $this->video->thumbnail = 'data:' . $thumbnailMime . ';base64,' . $thumbnailData;
+        }
+
         $this->view->render(
             $response,
             $template,

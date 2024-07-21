@@ -44,13 +44,13 @@ class CspMiddleware
             ->addDirective('base-uri', [])
             ->addDirective('frame-ancestors', [])
             ->addSource('form-action', '*')
-            ->addSource('img-src', '*');
+            ->addSource('img-src', '*')
+            ->addSource('img-src', 'data:');
 
         if ($this->config->debug) {
             // So maximebf/debugbar, symfony/debug and symfony/error-handler can work.
             $csp->setDirective('script-src', ['self' => true, 'unsafe-inline' => true])
-                ->setDirective('style-src', ['self' => true, 'unsafe-inline' => true])
-                ->addSource('img-src', 'data:');
+                ->setDirective('style-src', ['self' => true, 'unsafe-inline' => true]);
         }
 
         return $csp->injectCSPHeader($response);
