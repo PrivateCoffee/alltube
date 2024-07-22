@@ -44,7 +44,13 @@ class DownloadController extends BaseController
     {
         $url = $this->getVideoPageUrl($request);
 
-        $this->video = $this->downloader->getVideo($url, $this->getFormat($request), $this->getPassword($request));
+        $format = $this->getFormat($request);
+
+        if ($this->config->remux && $request->getQueryParam('remux')) {
+            $this->video = $this->downloader->getVideo($url, $format . "+bestaudio", $this->getPassword($request));
+        } else {
+            $this->video = $this->downloader->getVideo($url, $format, $this->getPassword($request));
+        }
 
         try {
             if ($this->config->convert && $request->getQueryParam('audio')) {

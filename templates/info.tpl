@@ -32,6 +32,10 @@
                 {html_options name='format' options=$formats selected=$defaultFormat id="format" class="formats monospace"}
                 <br/>
                 <br/>
+                <input type="checkbox" checked name="remux" id="remux" value="1"/>
+                <label for="remux">{t}Remux with best audio{/t}</label>
+                <br/>
+                <br/>
             {/if}
             {if $config->stream}
                 <input type="checkbox" {if $config->stream !== 'ask'}checked{/if} name="stream" id="stream"/>
