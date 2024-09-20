@@ -13,6 +13,7 @@ use Alltube\Locale;
 use Alltube\Middleware\CspMiddleware;
 use Exception;
 use Graby\HttpClient\Plugin\ServerSideRequestForgeryProtection\Exception\InvalidURLException;
+use GrumPHP\Util\Str;
 use Slim\Http\StatusCode;
 use Slim\Http\Uri;
 use stdClass;
@@ -44,7 +45,12 @@ class FrontController extends BaseController
     {
         parent::__construct($container);
 
-        $this->view = $this->container->get('view');
+        $view = $this->container->get('view');
+        assert($view instanceof Smarty);
+        $this->view = $view;
+
+        // Plugins
+        $this->view->registerPlugin('modifier', 'filter_var', 'filter_var');
     }
 
     /**
@@ -226,19 +232,22 @@ class FrontController extends BaseController
         if (isset($this->video->thumbnail) && $this->video->thumbnail !== '') {
             /* Fetch the thumbnail */
             $thumbnailData = file_get_contents($this->video->thumbnail);
-            $thumbnailData = base64_encode($thumbnailData);
-            /* Guess the mime type */
-            $thumbnailMime = 'image/jpeg';
 
-            if (strpos($this->video->thumbnail, '.png') !== false) {
-                $thumbnailMime = 'image/png';
-            } elseif (strpos($this->video->thumbnail, '.gif') !== false) {
-                $thumbnailMime = 'image/gif';
-            } elseif (strpos($this->video->thumbnail, '.webp') !== false) {
-                $thumbnailMime = 'image/webp';
+            if ($thumbnailData !== false) {
+                $thumbnailData = base64_encode($thumbnailData);
+                /* Guess the mime type */
+                $thumbnailMime = 'image/jpeg';
+
+                if (strpos($this->video->thumbnail, '.png') !== false) {
+                    $thumbnailMime = 'image/png';
+                } elseif (strpos($this->video->thumbnail, '.gif') !== false) {
+                    $thumbnailMime = 'image/gif';
+                } elseif (strpos($this->video->thumbnail, '.webp') !== false) {
+                    $thumbnailMime = 'image/webp';
+                }
+
+                $this->video->thumbnail = 'data:' . $thumbnailMime . ';base64,' . $thumbnailData;
             }
-
-            $this->video->thumbnail = 'data:' . $thumbnailMime . ';base64,' . $thumbnailData;
         }
 
         $this->view->render(
@@ -349,7 +358,11 @@ class FrontController extends BaseController
         $response = $cspMiddleware->applyHeader($response);
 
         if ($this->config->debug) {
-            $renderer = new HtmlErrorRenderer(true, null, null, $this->container->get('root_path'));
+            $projectDir = $this->container->get('root_path');
+
+            assert(is_string($projectDir) || is_null($projectDir));
+
+            $renderer = new HtmlErrorRenderer(true, null, null, $projectDir);
             $exception = $renderer->render($error);
 
             $response->getBody()->write($exception->getAsString());
