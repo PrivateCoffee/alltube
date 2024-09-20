@@ -23,18 +23,25 @@
             {/strip}">
                     {if !isset($entry->title)}
                         {if $entry->ie_key == YoutubePlaylist}
-                            Playlist
+                            {t}Playlist{/t}
                         {else}
-                            Video
+                            {t}Video{/t}
                         {/if}
                     {else}
                         {$entry->title}
                     {/if}
                 </a>
             </h3>
-            <a target="_blank" class="downloadBtn"
-               href="{path_for name="download"}?url={$entry->url}">{t}Download{/t}</a>
-            <a target="_blank" href="{path_for name="info"}?url={$entry->url}">{t}More options{/t}</a>
+            {if $entry->_type == 'playlist'}
+                <p class="playlist-entry-description">
+                    <a target="_blank" class="downloadBtn" 
+                    href="{path_for name="info"}?url={$entry->webpage_url}">{t}View playlist{/t}</a>
+                </p>
+            {else}
+                <a target="_blank" class="downloadBtn"
+                href="{path_for name="download"}?url={$entry->url}">{t}Download{/t}</a>
+                <a target="_blank" href="{path_for name="info"}?url={$entry->url}">{t}More options{/t}</a>
+            {/if}
         </div>
     {/foreach}
 {/block}
