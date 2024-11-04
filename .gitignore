@@ -9,3 +9,4 @@ i18n/*/LC_MESSAGES/*.mo
 .git/
 assets/
 composer.phar
+venv/
