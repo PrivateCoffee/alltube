@@ -112,6 +112,8 @@ class DownloadController extends BaseController
             $to = $request->getQueryParam('to');
         }
 
+        assert((is_string($from) || is_null($from)) && (is_string($to) || is_null($to)));
+
         $response = $response->withHeader(
             'Content-Disposition',
             'attachment; filename="' .
@@ -281,7 +283,7 @@ class DownloadController extends BaseController
              */
             $videoUrls = [];
         }
-        if (count($videoUrls) > 1) {
+        if (count($videoUrls) > 1 && !isset($this->video->entries)) {
             return $this->getRemuxStream($request, $response);
         } elseif ($this->config->stream && (isset($this->video->entries) || $request->getQueryParam('stream'))) {
             return $this->getStream($request, $response);
@@ -311,6 +313,9 @@ class DownloadController extends BaseController
      */
     private function getConvertedResponse(Request $request, Response $response): Response
     {
+        assert(is_string($request->getQueryParam('customFormat')));
+        assert(is_int($request->getQueryParam('customBitrate')));
+
         $response = $response->withHeader(
             'Content-Disposition',
             'attachment; filename="' .
