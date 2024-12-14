@@ -24,7 +24,7 @@ class Config
      *
      * @var string
      */
-    public string $youtubedl = 'vendor/yt-dlp/yt-dlp/yt_dlp/__main__.py';
+    public string $youtubedl = '/usr/bin/yt-dlp';
 
     /**
      * python binary path.
@@ -276,7 +276,9 @@ class Config
     public static function fromFile(string $file): Config
     {
         if (is_file($file)) {
-            return new self(Yaml::parse(strval(file_get_contents($file))));
+            $yaml = Yaml::parse(strval(file_get_contents($file)));
+            assert(is_array($yaml));
+            return new self($yaml);
         } else {
             throw new ConfigException("Can't find config file at " . $file);
         }
