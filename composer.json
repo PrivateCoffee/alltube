@@ -1,5 +1,5 @@
 {
-  "name": "rudloff/alltube",
+  "name": "privatecoffee/alltube",
   "description": "HTML GUI for youtube-dl",
   "license": "GPL-3.0-only",
   "type": "project",
@@ -15,6 +15,12 @@
       "email": "contact@olivierhaquette.fr",
       "homepage": "https://ographik.fr/",
       "role": "Designer"
+    },
+    {
+      "name": "Kumi",
+      "email": "alltube@kumi.email",
+      "homepage": "https://kumi.website/",
+      "role": "Developer"
     }
   ],
   "require": {
@@ -28,16 +34,16 @@
     "j0k3r/httplug-ssrf-plugin": "^2.0",
     "jawira/case-converter": "^3.4",
     "jean85/pretty-package-versions": "^1.3",
+    "kumi/alltube-library": "dev-main",
     "mathmarques/smarty-view": "^1.2",
     "oomphinc/composer-installers-extender": "^2.0",
     "paragonie/csp-builder": "^2.5",
     "rinvex/countries": "^7.3",
-    "rudloff/alltube-library": "^0.1.3",
     "symfony/finder": "^5.4",
     "symfony/translation": "^4.0",
     "symfony/yaml": "^4.0",
     "webfontkit/open-sans": "^1.0",
-    "yt-dlp/yt-dlp": "^2023.03",
+    "yt-dlp/yt-dlp": "^2024.12",
     "zonuexe/http-accept-language": "^0.4.1"
   },
   "require-dev": {
@@ -63,12 +69,16 @@
       "type": "package",
       "package": {
         "name": "yt-dlp/yt-dlp",
-        "version": "2023.03.04",
+        "version": "2024.12.13",
         "dist": {
           "type": "tar",
-          "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp.tar.gz"
+          "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2024.12.13/yt-dlp.tar.gz"
         }
       }
+    },
+    {
+      "type": "git",
+      "url": "https://git.private.coffee/kumi/alltube-library.git"
     }
   ],
   "autoload": {
@@ -120,7 +130,6 @@
     "update-locales": [
       "tsmarty2c.php templates > i18n/template.pot",
       "xgettext --omit-header -kt -j -o i18n/template.pot classes/*.php classes/*/*.php"
-    ],
-    "youtube-dl": "vendor/ytdl-org/youtube-dl/youtube_dl/__main__.py"
+    ]
   }
 }
