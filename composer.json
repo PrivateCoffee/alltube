@@ -48,7 +48,7 @@
   },
   "require-dev": {
     "consolidation/robo": "^3.0",
-    "enlightn/security-checker": "^1.4",
+    "enlightn/security-checker": "^2.0",
     "ergebnis/composer-normalize": "^2.20",
     "insite/composer-dangling-locked-deps": "^0.2.1",
     "junker/debugbar-smarty": "^0.1.0",
