@@ -44,7 +44,7 @@
     "symfony/yaml": "^4.0",
     "webfontkit/open-sans": "^1.0",
     "yt-dlp/yt-dlp": "^2024.12",
-    "zonuexe/http-accept-language": "^0.4.1"
+    "zonuexe/http-accept-language": "^0.6.0"
   },
   "require-dev": {
     "consolidation/robo": "^3.0",
