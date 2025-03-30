@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5959514204de08950adb57ca2e1aba79",
+    "content-hash": "d55c731a38c6e87d419e41676de6e137",
     "packages": [
         {
             "name": "aura/session",
@@ -3655,25 +3655,26 @@
         },
         {
             "name": "zonuexe/http-accept-language",
-            "version": "0.4.1",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BaguettePHP/http-accept-language.git",
-                "reference": "f71422b1200737aa9d7c7fa83f07cbe4616198d5"
+                "reference": "e423ad29571e89d962bea15d1f74953479fd3d24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BaguettePHP/http-accept-language/zipball/f71422b1200737aa9d7c7fa83f07cbe4616198d5",
-                "reference": "f71422b1200737aa9d7c7fa83f07cbe4616198d5",
+                "url": "https://api.github.com/repos/BaguettePHP/http-accept-language/zipball/e423ad29571e89d962bea15d1f74953479fd3d24",
+                "reference": "e423ad29571e89d962bea15d1f74953479fd3d24",
                 "shasum": ""
             },
             "require": {
-                "ext-intl": "*"
+                "ext-intl": "*",
+                "php": ">=7.2.0"
             },
             "require-dev": {
-                "phploc/phploc": "*",
-                "phpunit/phpunit": "4.1.*",
-                "theseer/phpdox": "0.6.*"
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^8.5|^7.5|^4.8",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "type": "library",
             "autoload": {
@@ -3694,9 +3695,9 @@
             "description": "HTTP Accept-Language Header parser",
             "support": {
                 "issues": "https://github.com/BaguettePHP/http-accept-language/issues",
-                "source": "https://github.com/BaguettePHP/http-accept-language/tree/0.4.1"
+                "source": "https://github.com/BaguettePHP/http-accept-language/tree/0.6.0"
             },
-            "time": "2014-10-19T09:22:18+00:00"
+            "time": "2023-04-29T18:49:09+00:00"
         }
     ],
     "packages-dev": [
