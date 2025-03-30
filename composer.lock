@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5959514204de08950adb57ca2e1aba79",
+    "content-hash": "cdfa3cb94d16dd7caf557e09c007022a",
     "packages": [
         {
             "name": "aura/session",
@@ -5717,25 +5717,24 @@
         },
         {
             "name": "insite/composer-dangling-locked-deps",
-            "version": "0.2.1",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/prudloff-insite/composer-dangling-locked-deps.git",
-                "reference": "73e0f7096f860ff7c326194463373c364923f3fc"
+                "reference": "668fa1de82feedd73669615077705e40e4cda58e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/prudloff-insite/composer-dangling-locked-deps/zipball/73e0f7096f860ff7c326194463373c364923f3fc",
-                "reference": "73e0f7096f860ff7c326194463373c364923f3fc",
+                "url": "https://api.github.com/repos/prudloff-insite/composer-dangling-locked-deps/zipball/668fa1de82feedd73669615077705e40e4cda58e",
+                "reference": "668fa1de82feedd73669615077705e40e4cda58e",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.1|^2.0",
-                "ocramius/package-versions": "^1.4"
+                "composer-plugin-api": "^2.0"
             },
             "require-dev": {
                 "composer/composer": "^2.0",
-                "phpro/grumphp": "^0.21.0"
+                "phpro/grumphp": "^2.1"
             },
             "type": "composer-plugin",
             "extra": {
@@ -5754,9 +5753,9 @@
             "description": "Detect dangling Composer locked dependencies",
             "support": {
                 "issues": "https://github.com/prudloff-insite/composer-dangling-locked-deps/issues",
-                "source": "https://github.com/prudloff-insite/composer-dangling-locked-deps/tree/0.2.1"
+                "source": "https://github.com/prudloff-insite/composer-dangling-locked-deps/tree/0.4.1"
             },
-            "time": "2020-11-16T13:45:00+00:00"
+            "time": "2024-10-28T17:33:19+00:00"
         },
         {
             "name": "junker/debugbar-smarty",
